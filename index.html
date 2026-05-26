@@ -19,8 +19,37 @@
 <link rel="preload" href="fonts/general-sans-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<!-- Hide loader instantly if already played this session -->
+<script>if(sessionStorage.getItem('cd_loaded'))document.documentElement.classList.add('loader-done');</script>
+<noscript><style>#loader{display:none}</style></noscript>
 </head>
 <body>
+
+<!-- ============ LOADER ============ -->
+<div id="loader" aria-hidden="true" aria-label="Loading">
+  <div class="loader__inner">
+    <!--
+      SVG wordmark: textLength="548" forces "complete digital" to span
+      exactly the same 548px as the three dots row (3×140 + 2×64 gap).
+    -->
+    <svg class="loader__wm" width="548" height="78" viewBox="0 0 548 78" aria-label="complete digital">
+      <text x="0" y="60"
+            font-family="'General Sans', system-ui, sans-serif"
+            font-weight="500"
+            font-size="58"
+            fill="currentColor"
+            textLength="548"
+            lengthAdjust="spacingAndGlyphs">complete digital</text>
+    </svg>
+    <div class="loader__dots">
+      <div class="loader__dot"><span class="loader__dot-label">Design</span></div>
+      <div class="loader__dot"><span class="loader__dot-label">Create</span></div>
+      <div class="loader__dot"><span class="loader__dot-label">Support</span></div>
+    </div>
+  </div>
+  <!-- Expands from dot-3 centre to cover screen, then fades to reveal site -->
+  <div class="loader__cover"></div>
+</div>
 
 <!-- ============ NAV ============ -->
 <nav class="nav" aria-label="Primary">
