@@ -530,3 +530,202 @@ body.intro.is-in .hero__guarantee { transition-delay: 0.24s; }
 @media (max-width: 768px) and (min-width: 0px) {
   .final__ctas .btn, .hero__ctas .btn { flex: 1 1 auto; justify-content: center; }
 }
+
+/* ============================================================
+   Multi-page additions
+   ============================================================ */
+
+/* ---------- Active nav link (2px accent, always visible) ---------- */
+.nav__links a[aria-current="page"] { color: var(--ink); }
+.nav__links a[aria-current="page"]::after {
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(1);
+  transition: none;
+}
+
+/* ---------- Inner-page hero (compact) ---------- */
+.page-hero { padding-top: 96px; padding-bottom: 96px; }
+.page-hero__meta { margin-bottom: 20px; }
+.page-hero__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "opsz" 120;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 24px;
+  max-width: 16ch;
+}
+.page-hero__sub { max-width: 620px; color: var(--ink-2); }
+
+/* ---------- Design philosophy — grid ---------- */
+.dp-layout {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.dp-sidenav {
+  position: sticky;
+  top: calc(72px + 48px);
+}
+.dp-navitem {
+  display: block;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-3);
+  padding: 8px 0 8px 16px;
+  border-left: 2px solid transparent;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.dp-navitem.is-active { color: var(--ink); border-left-color: var(--ink); }
+.dp-navitem:hover { color: var(--ink-2); }
+
+/* ---------- Design philosophy — steps ---------- */
+.dp-step {
+  padding-block: 80px;
+  border-top: 1px solid var(--rule);
+}
+.dp-step:first-child { border-top: none; padding-top: 0; }
+.dp-step__num {
+  display: block;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+.dp-step__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "opsz" 100;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 28px;
+  max-width: 22ch;
+}
+.dp-step__body p { color: var(--ink-2); max-width: 64ch; }
+.dp-step__body p + p { margin-top: 18px; }
+
+/* ---------- Deliverables ---------- */
+.dp-deliverables {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+.dp-deliverables .caption { margin-bottom: 12px; }
+.dp-deliverables ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 32px; }
+.dp-deliverables li {
+  font-size: 15px;
+  color: var(--ink-2);
+  padding-left: 16px;
+  position: relative;
+}
+.dp-deliverables li::before { content: "—"; position: absolute; left: 0; color: var(--ink-3); }
+
+/* ---------- SEO page sections ---------- */
+.seo-sections { border-top: 1px solid var(--rule); }
+.seo-item {
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  gap: var(--gap);
+  padding-block: 72px;
+  border-bottom: 1px solid var(--rule);
+}
+.seo-item__num {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-3);
+  padding-top: 12px;
+}
+.seo-item__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "opsz" 100;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 24px;
+  max-width: 24ch;
+}
+.seo-item__body p { color: var(--ink-2); max-width: 64ch; }
+.seo-item__body p + p { margin-top: 16px; }
+
+/* ---------- Example — phone mockup ---------- */
+.example-stage {
+  padding-block: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+.phone {
+  position: relative;
+  width: 390px;
+  height: 800px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50px;
+  background: #fff;
+  overflow: hidden;
+  flex: none;
+}
+.phone__island {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 36px;
+  background: var(--ink);
+  border-radius: 20px;
+  z-index: 2;
+}
+.phone__screen {
+  position: absolute;
+  top: 66px;
+  left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  border-radius: 32px 32px 0 0;
+}
+.phone__screen iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.phone-caption {
+  font-size: 14px;
+  color: var(--ink-3);
+  text-align: center;
+  min-height: 22px;
+}
+
+/* ---------- Mobile updates for new pages ---------- */
+@media (max-width: 1024px) {
+  .dp-layout { grid-template-columns: 160px 1fr; gap: 48px; }
+}
+@media (max-width: 768px) {
+  .page-hero { padding-top: 64px; padding-bottom: 64px; }
+  .page-hero__title { font-size: clamp(36px, 9vw, 48px); }
+  .page-hero__sub { font-size: 20px; }
+
+  .dp-layout { display: block; }
+  .dp-sidenav { display: none; }
+  .dp-step { padding-block: 52px; }
+  .dp-step__title { font-size: clamp(24px, 6vw, 36px); }
+
+  .seo-item { grid-template-columns: 1fr; gap: 12px; padding-block: 48px; }
+  .seo-item__num { padding-top: 0; }
+  .seo-item__title { font-size: clamp(24px, 6vw, 36px); }
+
+  .example-stage { padding-block: 80px; }
+  .phone { width: calc(100vw - 40px); height: calc((100vw - 40px) * 800 / 390); border-radius: calc((100vw - 40px) * 50 / 390); }
+  .phone__island { top: 2%; width: 30.77%; height: 4.5%; }
+  .phone__screen { top: 8.25%; }
+}
